@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="fed8f008-3a8b-48b9-8bbb-b19b0c3454ea" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="manual test case" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="fed8f008-3a8b-48b9-8bbb-b19b0c3454eafileName">manual-test-case</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="manualTestStep" name="Manual for update user" id="6d7f162d-5f3c-467f-9cce-b4c11aa8dd03">
+    <con:description>PUT updates user with name</con:description>
+    <con:settings/>
+    <con:config xsi:type="con:ManualTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:expectedResult>200</con:expectedResult>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="REST Request" id="e4949c6e-7070-4e9b-bcfd-13b3f09f743c">
+    <con:settings/>
+    <con:config service="https://reqres.in" resourcePath="/api/users/" methodName="update user" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST Request" id="f58c7954-2b49-4e48-9eb1-7650ca0804c6" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>https://reqres.in</con:endpoint>
+        <con:request>{
+    "email": "eve.holt@reqres.in",
+    "password": "pistol"
+}</con:request>
+        <con:originalUri>https://reqres.in/api/users/</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="da158c5a-43b4-4555-b27d-2cea3896211b" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="Response SLA Assertion" id="be54310f-adb5-4437-814a-00b14352897c" name="Response SLA">
+          <con:configuration>
+            <SLA>200</SLA>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="name" value="{name}"/>
+          <con:entry key="content-type" value="application/json"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>content-type</con:entry>
+          <con:entry>name</con:entry>
+          <con:entry>id</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>
